@@ -1,0 +1,60 @@
+## Ignore Visual Studio Temporary Files and Build Outputs
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userhtml
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Mono auto generated files
+mono_crash.*
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Re]leasePublic/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio 2015/2017/2019/2022 cache directory
+.vs/
+# Uncomment if you have tasks that create the project's static files in the bundle
+# Note: CD/CI systems may need to build these assets
+# WebPublish/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NUnit results
+nunit-agent.log
+nunit-server-log.log
+NUnit2.Files.xml
+NUnit3.TestResults.xml
+
+# Crash dumps
+*.dmp
+
+# SQLite database files (if used locally)
+*.db
+*.sqlite
+*.sqlite3
+
+# Local settings files
+appsettings.Development.json
+local.settings.json
+
+# Rider/Resharper
+.idea/
+*.sln.iml
