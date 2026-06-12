@@ -11,5 +11,13 @@
     <Resource Include="resources\**\*.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- Database helper (DatabaseService) -->
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.8" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <!-- Reporting / export (ReportService) -->
+    <PackageReference Include="QuestPDF" Version="2024.12.3" />
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
+  </ItemGroup>
 
 </Project>

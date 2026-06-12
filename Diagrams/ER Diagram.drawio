@@ -1,0 +1,67 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram id="er-medihelp" name="ER Diagram - Medi Help J&#39;Pura">
+    <mxGraphModel dx="2135" dy="1043" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Medi Help J&#39;Pura — Entity Relationship Diagram (SQLite)" style="text;html=1;fontSize=16;fontStyle=1;align=left;fontColor=#4E0205;" parent="1" vertex="1">
+          <mxGeometry x="500" y="10" width="700" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="e_users" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;Users&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK Id&lt;br&gt;FirstName&lt;br&gt;LastName&lt;br&gt;Username (UNIQUE)&lt;br&gt;PasswordHash&lt;br&gt;Role&lt;br&gt;PhoneNumber&lt;br&gt;Email&lt;br&gt;Specialization&lt;br&gt;Department&lt;br&gt;AdminLevel&lt;br&gt;JobTitle&lt;br&gt;Shift&lt;br&gt;IsActive&lt;br&gt;CreatedAt&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fillColor=#FFF5F5;strokeColor=#8A0007;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="520" y="340" width="140" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="e_patients" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;Patients&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK Id&lt;br&gt;FirstName&lt;br&gt;LastName&lt;br&gt;DateOfBirth&lt;br&gt;Gender&lt;br&gt;PhoneNumber&lt;br&gt;Email&lt;br&gt;Address&lt;br&gt;PatientType&lt;br&gt;RegistrationNumber (UNIQUE)&lt;br&gt;Faculty&lt;br&gt;Program&lt;br&gt;YearOfStudy&lt;br&gt;IsArchived&lt;br&gt;CreatedAt&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fillColor=#FFF5F5;strokeColor=#8A0007;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="520" y="60" width="180" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inventory" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;Inventory&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK Id&lt;br&gt;ItemName&lt;br&gt;Category&lt;br&gt;Quantity&lt;br&gt;Unit&lt;br&gt;UnitPrice&lt;br&gt;ReorderLevel&lt;br&gt;ExpiryDate&lt;br&gt;Supplier&lt;br&gt;UpdatedAt&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fillColor=#FFF8EE;strokeColor=#F7AA37;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="1010" y="60" width="120" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="e_appts" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;Appointments&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK Id&lt;br&gt;FK PatientId&lt;br&gt;FK DoctorId&lt;br&gt;AppointmentDate&lt;br&gt;DurationMinutes&lt;br&gt;Status&lt;br&gt;Notes&lt;br&gt;CreatedAt&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fillColor=#FFF5F5;strokeColor=#8A0007;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="750" y="490" width="120" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="e_records" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;MedicalRecords&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK Id&lt;br&gt;FK PatientId&lt;br&gt;FK DoctorId&lt;br&gt;FK AppointmentId (null)&lt;br&gt;Symptoms&lt;br&gt;Diagnosis&lt;br&gt;Treatment&lt;br&gt;BloodPressure&lt;br&gt;Pulse&lt;br&gt;Temperature&lt;br&gt;Weight&lt;br&gt;Notes&lt;br&gt;RecordDate&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fillColor=#FFF5F5;strokeColor=#8A0007;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="980" y="360" width="150" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="e_presc" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;Prescriptions&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK Id&lt;br&gt;FK MedicalRecordId&lt;br&gt;FK InventoryItemId (null)&lt;br&gt;Medicine&lt;br&gt;Dosage&lt;br&gt;Instructions&lt;br&gt;Quantity&lt;br&gt;CreatedAt&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fillColor=#FFF5F5;strokeColor=#8A0007;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="740" y="60" width="170" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="e_reports" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK Id&lt;br&gt;ReportType&lt;br&gt;Format&lt;br&gt;FK GeneratedBy (null)&lt;br&gt;GeneratedDate&lt;br&gt;FilePath&lt;br&gt;Parameters&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fillColor=#F4F4F4;strokeColor=#555555;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="325" y="60" width="130" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="e_audit" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;AuditLog&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK Id&lt;br&gt;FK UserId (null)&lt;br&gt;Action&lt;br&gt;Entity&lt;br&gt;Timestamp&lt;br&gt;Detail&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fillColor=#F4F4F4;strokeColor=#555555;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="325" y="310" width="100" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" value="DoctorId" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;fontSize=10;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;exitX=1;exitY=0.75;entryX=0;entryY=0.5;exitDx=0;exitDy=0;" parent="1" source="e_users" target="e_appts" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" value="PatientId" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;fontSize=10;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;exitX=1;exitY=1;entryX=0;entryY=0.111;exitDx=0;exitDy=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="e_patients" target="e_appts" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r3" value="PatientId" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;fontSize=10;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;exitX=0.994;exitY=0.803;entryX=0;entryY=0.2;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="e_patients" target="e_records" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r4" value="DoctorId" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;fontSize=10;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;exitX=1.021;exitY=0.444;entryX=0;entryY=0.4;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="e_users" target="e_records" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r5" value="AppointmentId" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;fontSize=10;startArrow=ERzeroToOne;startFill=0;endArrow=ERmany;endFill=0;exitX=1;exitY=0.25;entryX=0;entryY=0.75;entryDx=0;entryDy=0;exitDx=0;exitDy=0;" parent="1" source="e_appts" target="e_records" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r6" value="MedicalRecordId" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;fontSize=10;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;exitX=0;exitY=0;entryX=1;entryY=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" parent="1" source="e_records" target="e_presc" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r7" value="InventoryItemId" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;fontSize=10;startArrow=ERzeroToOne;startFill=0;endArrow=ERmany;endFill=0;exitX=0;exitY=0.5;entryX=1;entryY=0.3;exitDx=0;exitDy=0;" parent="1" source="e_inventory" target="e_presc" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r8" value="GeneratedBy" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;fontSize=10;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;exitX=0;exitY=0;entryX=1;entryY=0.2;exitDx=0;exitDy=0;" parent="1" source="e_users" target="e_reports" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r9" value="UserId" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;fontSize=10;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;exitX=0;exitY=0.16;entryX=1;entryY=1;entryDx=0;entryDy=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="e_users" target="e_audit" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;PK = Primary Key&lt;br&gt;FK = Foreign Key&lt;br&gt;(null) = nullable FK&lt;br&gt;&lt;br&gt;Crow&#39;s foot: one (|) to many (&amp;lt;)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fillColor=#7BF5FF;strokeColor=#AAAAAA;fontSize=10;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="325" y="540" width="175" height="130" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
