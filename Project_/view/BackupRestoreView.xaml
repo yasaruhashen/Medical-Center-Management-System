@@ -1,0 +1,121 @@
+<UserControl x:Class="Project_.Views.BackupRestoreView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#F9FAFB">
+    <ScrollViewer Padding="25" VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <!-- Header -->
+            <TextBlock Text="Backup &amp; Restore" FontWeight="Bold" FontSize="24" Foreground="#1F2937" Margin="0,0,0,5"/>
+            <TextBlock Text="Export a full system backup or restore from a previous backup file." FontSize="14" Foreground="#6B7280" Margin="0,0,0,25"/>
+
+            <!-- Current Data Summary -->
+            <Border Background="White" BorderBrush="#F3F4F6" BorderThickness="1" CornerRadius="12" Padding="20" Margin="0,0,0,25">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="1" Color="#000000" Opacity="0.05"/>
+                </Border.Effect>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                        <TextBlock Text="🗄️" Foreground="#8A0007" FontSize="18" Margin="0,0,10,0"/>
+                        <TextBlock Text="Current Data Summary" FontWeight="SemiBold" FontSize="16" Foreground="#374151"/>
+                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/><ColumnDefinition Width="10"/><ColumnDefinition Width="*"/><ColumnDefinition Width="10"/><ColumnDefinition Width="*"/><ColumnDefinition Width="10"/><ColumnDefinition Width="*"/><ColumnDefinition Width="10"/><ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Users -->
+                        <Border Grid.Column="0" Background="#FFF5F5" CornerRadius="8" Padding="15">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="👥" FontSize="24" HorizontalAlignment="Center"/>
+                                <TextBlock Text="32" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
+                                <TextBlock Text="Users" FontSize="12" Foreground="#6B7280" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- Patients -->
+                        <Border Grid.Column="2" Background="#FFF5F5" CornerRadius="8" Padding="15">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="🏥" FontSize="24" HorizontalAlignment="Center"/>
+                                <TextBlock Text="236" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
+                                <TextBlock Text="Patients" FontSize="12" Foreground="#6B7280" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- Appointments -->
+                        <Border Grid.Column="4" Background="#FFF5F5" CornerRadius="8" Padding="15">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="📅" FontSize="24" HorizontalAlignment="Center"/>
+                                <TextBlock Text="84" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
+                                <TextBlock Text="Appointments" FontSize="12" Foreground="#6B7280" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- Inventory -->
+                        <Border Grid.Column="6" Background="#FFF5F5" CornerRadius="8" Padding="15">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="💊" FontSize="24" HorizontalAlignment="Center"/>
+                                <TextBlock Text="120" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
+                                <TextBlock Text="Inventory Items" FontSize="12" Foreground="#6B7280" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- Prescriptions -->
+                        <Border Grid.Column="8" Background="#FFF5F5" CornerRadius="8" Padding="15">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="📋" FontSize="24" HorizontalAlignment="Center"/>
+                                <TextBlock Text="45" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
+                                <TextBlock Text="Prescriptions" FontSize="12" Foreground="#6B7280" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- Export / Import -->
+            <Grid Margin="0,0,0,25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Export Backup -->
+                <Border Grid.Column="0" Background="White" BorderBrush="#F3F4F6" BorderThickness="1" CornerRadius="12" Padding="25">
+                    <Border.Effect><DropShadowEffect BlurRadius="5" ShadowDepth="1" Color="#000000" Opacity="0.05"/></Border.Effect>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                            <Border Width="40" Height="40" CornerRadius="12" Background="#F0FDF4" Margin="0,0,15,0">
+                                <TextBlock Text="⬇️" Foreground="#16A34A" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Export Backup" FontWeight="SemiBold" FontSize="16" Foreground="#1F2937"/>
+                                <TextBlock Text="Download all system data" FontSize="12" Foreground="#6B7280"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <TextBlock Text="Creates a complete snapshot of all users, patients, appointments, inventory, and prescriptions." TextWrapping="Wrap" Foreground="#6B7280" Margin="0,0,0,15"/>
+                        <Button Content="⬇ Export Backup" Background="#16A34A" Foreground="White" FontWeight="Bold" Padding="15" BorderThickness="0">
+                            <Button.Resources><Style TargetType="Border"><Setter Property="CornerRadius" Value="10"/></Style></Button.Resources>
+                        </Button>
+                    </StackPanel>
+                </Border>
+
+                <!-- Import Backup -->
+                <Border Grid.Column="2" Background="White" BorderBrush="#F3F4F6" BorderThickness="1" CornerRadius="12" Padding="25">
+                    <Border.Effect><DropShadowEffect BlurRadius="5" ShadowDepth="1" Color="#000000" Opacity="0.05"/></Border.Effect>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                            <Border Width="40" Height="40" CornerRadius="12" Background="#FFF0F0" Margin="0,0,15,0">
+                                <TextBlock Text="⬆️" Foreground="#8A0007" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Restore Backup" FontWeight="SemiBold" FontSize="16" Foreground="#1F2937"/>
+                                <TextBlock Text="Upload a backup file" FontSize="12" Foreground="#6B7280"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <Border Background="#FFFBEB" BorderBrush="#FDE68A" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,0,15">
+                            <TextBlock Text="Warning: Restoring will replace all current data. This cannot be undone." Foreground="#B45309" FontSize="12" TextWrapping="Wrap"/>
+                        </Border>
+                        <Button Content="⬆ Choose Backup File" Background="#8A0007" Foreground="White" FontWeight="Bold" Padding="15" BorderThickness="0">
+                            <Button.Resources><Style TargetType="Border"><Setter Property="CornerRadius" Value="10"/></Style></Button.Resources>
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

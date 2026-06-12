@@ -16,10 +16,6 @@ namespace Project_
             LoginScreen.LoginSucceeded += OnLoginSucceeded;
         }
 
-        /// <summary>
-        /// Called when the user authenticates successfully.
-        /// Hides the login screen and shows the main shell.
-        /// </summary>
         private void OnLoginSucceeded(object? sender, LoginEventArgs e)
         {
             // Hide login, reveal application shell
@@ -29,18 +25,42 @@ namespace Project_
             // Update window title to reflect the authenticated role
             Title = $"Medi Help(University Medical Centre) [{e.Role}]";
 
-            // TODO: Pass the role into the shell / navigation service
-            //       so menus are filtered by permission level.
+            ShellGrid.Children.Clear();
+
+            if (e.Role == "Admin")
+            {
+                var adminShell = new AdminShellView();
+                adminShell.LogoutRequested += AdminShell_LogoutRequested;
+                ShellGrid.Children.Add(adminShell);
+            }
+            else
+            {
+                // Placeholder for other roles
+                var textBlock = new System.Windows.Controls.TextBlock
+                {
+                    Text = $"{e.Role} Shell — (Not Implemented)",
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    FontSize = 20
+                };
+                ShellGrid.Children.Add(textBlock);
+            }
+        }
+
+        private void AdminShell_LogoutRequested(object? sender, System.EventArgs e)
+        {
+            ShellGrid.Children.Clear();
+            ShellGrid.Visibility = Visibility.Collapsed;
+            LoginScreen.Visibility = Visibility.Visible;
+            Title = "Medi Help J'Pura";
         }
 
         private void LoginScreen_Loaded(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void LoginScreen_Loaded_1(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }
