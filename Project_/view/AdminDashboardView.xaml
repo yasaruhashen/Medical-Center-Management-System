@@ -1,0 +1,281 @@
+<UserControl x:Class="Project_.Views.AdminDashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Project_.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="800"
+             Background="#F9FAFB">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="25">
+        <StackPanel>
+            
+            <!-- Header -->
+            <TextBlock Text="Admin Dashboard" FontWeight="Bold" FontSize="24" Foreground="#1F2937" Margin="0,0,0,5"/>
+            <TextBlock Text="MEDI HELP J'PURA — System Overview" FontSize="14" Foreground="#6B7280" Margin="0,0,0,25"/>
+
+            <!-- Stats Grid -->
+            <Grid Margin="0,0,0,25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Total Patients -->
+                <Border Grid.Row="0" Grid.Column="0" Style="{DynamicResource StatCardStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Style="{DynamicResource IconContainerStyle}" Background="#FFF0F0">
+                            <!-- Icon Placeholder -->
+                            <TextBlock Text="👥" FontSize="20" Foreground="#8A0007" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+                            <TextBlock Text="Total Patients" FontSize="12" Foreground="#6B7280"/>
+                            <TextBlock Text="236" FontSize="24" FontWeight="Bold" Foreground="#8A0007"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Doctors -->
+                <Border Grid.Row="0" Grid.Column="2" Style="{DynamicResource StatCardStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Style="{DynamicResource IconContainerStyle}" Background="#FDF0F0">
+                            <TextBlock Text="👨‍⚕️" FontSize="20" Foreground="#4E0205" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+                            <TextBlock Text="Doctors" FontSize="12" Foreground="#6B7280"/>
+                            <TextBlock Text="12" FontSize="24" FontWeight="Bold" Foreground="#4E0205"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Staff -->
+                <Border Grid.Row="0" Grid.Column="4" Style="{DynamicResource StatCardStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Style="{DynamicResource IconContainerStyle}" Background="#FFFBF0">
+                            <TextBlock Text="👩‍💻" FontSize="20" Foreground="#F7AA37" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+                            <TextBlock Text="Staff Members" FontSize="12" Foreground="#6B7280"/>
+                            <TextBlock Text="18" FontSize="24" FontWeight="Bold" Foreground="#F7AA37"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Today's Appts -->
+                <Border Grid.Row="2" Grid.Column="0" Style="{DynamicResource StatCardStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Style="{DynamicResource IconContainerStyle}" Background="#FFF0F0">
+                            <TextBlock Text="📅" FontSize="20" Foreground="#8A0007" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+                            <TextBlock Text="Today's Appts" FontSize="12" Foreground="#6B7280"/>
+                            <TextBlock Text="14" FontSize="24" FontWeight="Bold" Foreground="#8A0007"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Pending Prescriptions -->
+                <Border Grid.Row="2" Grid.Column="2" Style="{DynamicResource StatCardStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Style="{DynamicResource IconContainerStyle}" Background="#FDF0F0">
+                            <TextBlock Text="📝" FontSize="20" Foreground="#4E0205" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+                            <TextBlock Text="Pending Prescripts." FontSize="11" Foreground="#6B7280"/>
+                            <TextBlock Text="8" FontSize="24" FontWeight="Bold" Foreground="#4E0205"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Low Stock -->
+                <Border Grid.Row="2" Grid.Column="4" Style="{DynamicResource StatCardStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Style="{DynamicResource IconContainerStyle}" Background="#FFFBEB">
+                            <TextBlock Text="⚠️" FontSize="20" Foreground="#D97706" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+                            <TextBlock Text="Low Stock Items" FontSize="12" Foreground="#6B7280"/>
+                            <TextBlock Text="3" FontSize="24" FontWeight="Bold" Foreground="#D97706"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- Charts Section (Mocked up) -->
+            <Grid Margin="0,0,0,25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Monthly Patients -->
+                <Border Grid.Column="0" Style="{DynamicResource ChartCardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="📈 Monthly Patients" FontWeight="SemiBold" FontSize="16" Foreground="#374151" Margin="0,0,0,15"/>
+                        <Grid Height="200">
+                            <!-- Mock lines for the chart background -->
+                            <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,20">
+                                <Border Height="1" Background="#F0E6E6" Margin="0,0,0,40"/>
+                                <Border Height="1" Background="#F0E6E6" Margin="0,0,0,40"/>
+                                <Border Height="1" Background="#F0E6E6" Margin="0,0,0,40"/>
+                                <Border Height="1" Background="#F0E6E6"/>
+                            </StackPanel>
+                            <!-- Mock chart elements (simplified bars instead of line to look decent in raw WPF) -->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="180">
+                                <Border Width="30" Height="70" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom" Margin="0,0,15,0"/>
+                                <Border Width="30" Height="90" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom" Margin="0,0,15,0"/>
+                                <Border Width="30" Height="110" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom" Margin="0,0,15,0"/>
+                                <Border Width="30" Height="80" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom" Margin="0,0,15,0"/>
+                                <Border Width="30" Height="130" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom" Margin="0,0,15,0"/>
+                                <Border Width="30" Height="160" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom"/>
+                            </StackPanel>
+                        </Grid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <TextBlock Text="Jan" FontSize="11" Foreground="#9CA3AF" Margin="0,0,15,0"/>
+                            <TextBlock Text="Feb" FontSize="11" Foreground="#9CA3AF" Margin="0,0,15,0"/>
+                            <TextBlock Text="Mar" FontSize="11" Foreground="#9CA3AF" Margin="0,0,15,0"/>
+                            <TextBlock Text="Apr" FontSize="11" Foreground="#9CA3AF" Margin="0,0,15,0"/>
+                            <TextBlock Text="May" FontSize="11" Foreground="#9CA3AF" Margin="0,0,15,0"/>
+                            <TextBlock Text="Jun" FontSize="11" Foreground="#9CA3AF"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Appointment Status -->
+                <Border Grid.Column="2" Style="{DynamicResource ChartCardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="📅 Appointment Status" FontWeight="SemiBold" FontSize="16" Foreground="#374151" Margin="0,0,0,15"/>
+                        <Grid Height="200">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Mock Pie Chart using path -->
+                            <Canvas Grid.Column="0" Width="140" Height="140" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Ellipse Width="140" Height="140" Stroke="#8A0007" StrokeThickness="30" StrokeDashArray="2.5 0.5"/>
+                                <Ellipse Width="140" Height="140" Stroke="#F7AA37" StrokeThickness="30" StrokeDashArray="1 3"/>
+                            </Canvas>
+
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal" Margin="0,5">
+                                    <Border Width="12" Height="12" CornerRadius="6" Background="#8A0007" Margin="0,0,10,0"/>
+                                    <TextBlock Text="Scheduled: " Foreground="#4B5563"/>
+                                    <TextBlock Text="8" FontWeight="Bold"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,5">
+                                    <Border Width="12" Height="12" CornerRadius="6" Background="#F7AA37" Margin="0,0,10,0"/>
+                                    <TextBlock Text="Completed: " Foreground="#4B5563"/>
+                                    <TextBlock Text="4" FontWeight="Bold"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,5">
+                                    <Border Width="12" Height="12" CornerRadius="6" Background="#4E0205" Margin="0,0,10,0"/>
+                                    <TextBlock Text="Cancelled: " Foreground="#4B5563"/>
+                                    <TextBlock Text="2" FontWeight="Bold"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Inventory by Category -->
+            <Border Style="{DynamicResource ChartCardStyle}">
+                <StackPanel>
+                    <TextBlock Text="📦 Inventory by Category" FontWeight="SemiBold" FontSize="16" Foreground="#374151" Margin="0,0,0,15"/>
+                    <Grid Height="200">
+                        <!-- Mock lines for the chart background -->
+                        <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,20">
+                            <Border Height="1" Background="#F0E6E6" Margin="0,0,0,40"/>
+                            <Border Height="1" Background="#F0E6E6" Margin="0,0,0,40"/>
+                            <Border Height="1" Background="#F0E6E6" Margin="0,0,0,40"/>
+                            <Border Height="1" Background="#F0E6E6"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="180">
+                            <Border Width="40" Height="140" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom" Margin="0,0,15,0"/>
+                            <Border Width="40" Height="80" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom" Margin="0,0,15,0"/>
+                            <Border Width="40" Height="110" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom" Margin="0,0,15,0"/>
+                            <Border Width="40" Height="40" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom" Margin="0,0,15,0"/>
+                            <Border Width="40" Height="90" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom"/>
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                        <TextBlock Text="Painkillers" FontSize="11" Foreground="#9CA3AF" Margin="0,0,15,0"/>
+                        <TextBlock Text="Antibiotics" FontSize="11" Foreground="#9CA3AF" Margin="0,0,15,0"/>
+                        <TextBlock Text="Vitamins" FontSize="11" Foreground="#9CA3AF" Margin="0,0,15,0"/>
+                        <TextBlock Text="Equipment" FontSize="11" Foreground="#9CA3AF" Margin="0,0,15,0"/>
+                        <TextBlock Text="Syrup" FontSize="11" Foreground="#9CA3AF"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+
+    <UserControl.Resources>
+        <!-- Card Styles -->
+        <Style x:Key="StatCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="BorderBrush" Value="#F3F4F6"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="1" Color="#000000" Opacity="0.05"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ChartCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="BorderBrush" Value="#F3F4F6"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="1" Color="#000000" Opacity="0.05"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="IconContainerStyle" TargetType="Border">
+            <Setter Property="Width" Value="48"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="CornerRadius" Value="12"/>
+        </Style>
+    </UserControl.Resources>
+</UserControl>

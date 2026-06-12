@@ -10,7 +10,11 @@
         MinHeight="600" MinWidth="900"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResizeWithGrip"
-        Background="#FFFFFF">
+        Background="#FFFFFF"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType">
 
     
     <Grid x:Name="RootGrid">
