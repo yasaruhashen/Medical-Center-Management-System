@@ -1,0 +1,97 @@
+<Window x:Class="Project_.Views.UserEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="User Management" Height="500" Width="400"
+        WindowStartupLocation="CenterOwner"
+        Background="Transparent" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize">
+    
+    <Border Background="White" CornerRadius="16" Margin="10">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="15" ShadowDepth="5" Opacity="0.2" Color="Black"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Gradient Header -->
+            <Border Grid.Row="0" CornerRadius="16,16,0,0" Padding="20,15">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#8A0007" Offset="0"/>
+                        <GradientStop Color="#4E0205" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid>
+                    <TextBlock x:Name="TitleTxt" Text="Add New User" FontWeight="Bold" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                    <Button Content="✕" HorizontalAlignment="Right" VerticalAlignment="Center" Background="Transparent" Foreground="#FECACA" BorderThickness="0" FontSize="14" Click="BtnCancel_Click" Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+            </Border>
+
+            <!-- Form Content -->
+            <StackPanel Grid.Row="1" Margin="25">
+                <TextBlock Text="First Name *" FontWeight="SemiBold" Foreground="#374151" Margin="0,0,0,5" FontSize="13"/>
+                <TextBox x:Name="TxtFirstName" Padding="8,6" Margin="0,0,0,15" BorderBrush="#E5E7EB" BorderThickness="1">
+                    <TextBox.Resources><Style TargetType="Border"><Setter Property="CornerRadius" Value="8"/></Style></TextBox.Resources>
+                </TextBox>
+
+                <TextBlock Text="Last Name *" FontWeight="SemiBold" Foreground="#374151" Margin="0,0,0,5" FontSize="13"/>
+                <TextBox x:Name="TxtLastName" Padding="8,6" Margin="0,0,0,15" BorderBrush="#E5E7EB" BorderThickness="1">
+                    <TextBox.Resources><Style TargetType="Border"><Setter Property="CornerRadius" Value="8"/></Style></TextBox.Resources>
+                </TextBox>
+
+                <TextBlock Text="Username *" FontWeight="SemiBold" Foreground="#374151" Margin="0,0,0,5" FontSize="13"/>
+                <TextBox x:Name="TxtUsername" Padding="8,6" Margin="0,0,0,15" BorderBrush="#E5E7EB" BorderThickness="1">
+                    <TextBox.Resources><Style TargetType="Border"><Setter Property="CornerRadius" Value="8"/></Style></TextBox.Resources>
+                </TextBox>
+
+                <TextBlock x:Name="PasswordLabel" Text="Password *" FontWeight="SemiBold" Foreground="#374151" Margin="0,0,0,5" FontSize="13"/>
+                <PasswordBox x:Name="TxtPassword" Padding="8,6" Margin="0,0,0,15" BorderBrush="#E5E7EB" BorderThickness="1">
+                    <PasswordBox.Resources><Style TargetType="Border"><Setter Property="CornerRadius" Value="8"/></Style></PasswordBox.Resources>
+                </PasswordBox>
+
+                <TextBlock Text="Role *" FontWeight="SemiBold" Foreground="#374151" Margin="0,0,0,5" FontSize="13"/>
+                <ComboBox x:Name="CmbRole" Padding="8,6" Margin="0,0,0,25" BorderBrush="#E5E7EB" BorderThickness="1">
+                    <ComboBox.Resources><Style TargetType="Border"><Setter Property="CornerRadius" Value="8"/></Style></ComboBox.Resources>
+                    <ComboBoxItem Content="Admin"/>
+                    <ComboBoxItem Content="Doctor"/>
+                    <ComboBoxItem Content="Staff"/>
+                </ComboBox>
+
+                <!-- Action Buttons -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Button x:Name="BtnCancel" Grid.Column="0" Content="Cancel" Padding="0,10" Background="White" Foreground="#4B5563" BorderBrush="#E5E7EB" BorderThickness="1" Click="BtnCancel_Click" Cursor="Hand">
+                        <Button.Resources><Style TargetType="Border"><Setter Property="CornerRadius" Value="8"/></Style></Button.Resources>
+                    </Button>
+                    
+                    <Button x:Name="BtnSave" Grid.Column="2" Padding="0,10" Background="#8A0007" Foreground="White" BorderThickness="0" Click="BtnSave_Click" Cursor="Hand">
+                        <Button.Resources><Style TargetType="Border"><Setter Property="CornerRadius" Value="8"/></Style></Button.Resources>
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="✓" Margin="0,0,5,0" FontWeight="Bold"/>
+                                <TextBlock x:Name="BtnSaveTxt" Text="Add User" FontWeight="SemiBold"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

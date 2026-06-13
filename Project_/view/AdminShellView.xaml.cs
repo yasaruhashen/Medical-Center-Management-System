@@ -23,9 +23,9 @@ namespace Project_.Views
 
         private void NavButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn && btn.Tag is string tag)
+            if (sender is Button btn && btn.Tag != null)
             {
-                NavigateTo(tag);
+                NavigateTo(btn.Tag.ToString() ?? "");
             }
         }
 
@@ -41,6 +41,8 @@ namespace Project_.Views
                 "Users" => new UserManagementView(),
                 "Backup" => new BackupRestoreView(),
                 "Reports" => new AdminReportsView(),
+                "Patients" => new PatientsView(),
+                "Inventory" => new InventoryView(),
                 _ => new AdminDashboardView()
             };
 
@@ -49,7 +51,7 @@ namespace Project_.Views
 
         private void UpdateNavStyles(string activePage)
         {
-            var buttons = new[] { BtnDashboard, BtnUsers, BtnBackup, BtnReports };
+            var buttons = new[] { BtnDashboard, BtnUsers, BtnBackup, BtnReports, BtnPatients, BtnInventory };
             var activeBg = new SolidColorBrush(Color.FromRgb(0x8A, 0x00, 0x07));
             var inactiveBg = new SolidColorBrush(Colors.Transparent);
             var activeFg = new SolidColorBrush(Colors.White);

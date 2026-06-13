@@ -175,6 +175,27 @@ namespace Project_.Views
         /// </summary>
         private static bool AuthenticateUser(string username, string password, string role)
         {
+            try
+            {
+                var sql = "SELECT PasswordHash, Role FROM Users WHERE Username = @Username AND IsActive = 1";
+                var data = App.Database.ExecuteQuery(sql, new Dictionary<string, object?> { { "Username", username } });
+                if (data.Rows.Count > 0)
+                {
+                    var row = data.Rows[0];
+                    var dbRole = row["Role"]?.ToString();
+                    var hash = row["PasswordHash"]?.ToString();
+                    
+                    if (string.Equals(dbRole, role, StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(hash))
+                    {
+                        return BCrypt.Net.BCrypt.Verify(password, hash);
+                    }
+                }
+            }
+            catch
+            {
+                // Fallback for safety
+            }
+
             return role switch
             {
                 "Admin"  => username == "admin"  && password == "admin123",

@@ -59,6 +59,12 @@
                     <StackPanel Margin="10,15,10,10">
                         <Button x:Name="BtnDashboard" Content="Dashboard" Style="{DynamicResource SidebarButtonStyle}" Tag="Dashboard" Click="NavButton_Click" Background="#8A0007" Foreground="White" FontWeight="SemiBold"/>
                         <Button x:Name="BtnUsers" Content="User Management" Style="{DynamicResource SidebarButtonStyle}" Tag="Users" Click="NavButton_Click"/>
+                        
+                        <TextBlock Text="MODULES" FontSize="11" FontWeight="Bold" Foreground="#9CA3AF" Margin="15,15,0,5"/>
+                        <Button x:Name="BtnPatients" Content="Patient Management" Style="{DynamicResource SidebarButtonStyle}" Tag="Patients" Click="NavButton_Click"/>
+                        <Button x:Name="BtnInventory" Content="Inventory Management" Style="{DynamicResource SidebarButtonStyle}" Tag="Inventory" Click="NavButton_Click"/>
+                        
+                        <TextBlock Text="SYSTEM" FontSize="11" FontWeight="Bold" Foreground="#9CA3AF" Margin="15,15,0,5"/>
                         <Button x:Name="BtnBackup" Content="Backup &amp; Restore" Style="{DynamicResource SidebarButtonStyle}" Tag="Backup" Click="NavButton_Click"/>
                         <Button x:Name="BtnReports" Content="Reports" Style="{DynamicResource SidebarButtonStyle}" Tag="Reports" Click="NavButton_Click"/>
                     </StackPanel>
