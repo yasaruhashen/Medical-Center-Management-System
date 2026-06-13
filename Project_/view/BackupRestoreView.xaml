@@ -3,7 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Background="#F9FAFB">
     <ScrollViewer Padding="25" VerticalScrollBarVisibility="Auto">
-        <StackPanel>
+        <StackPanel x:Name="MainContainer" Opacity="0">
+            <StackPanel.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5" />
+                            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,20,0,0" To="0,0,0,0" Duration="0:0:0.5">
+                                <ThicknessAnimation.EasingFunction><QuadraticEase EasingMode="EaseOut"/></ThicknessAnimation.EasingFunction>
+                            </ThicknessAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </StackPanel.Triggers>
             <!-- Header -->
             <TextBlock Text="Backup &amp; Restore" FontWeight="Bold" FontSize="24" Foreground="#1F2937" Margin="0,0,0,5"/>
             <TextBlock Text="Export a full system backup or restore from a previous backup file." FontSize="14" Foreground="#6B7280" Margin="0,0,0,25"/>
@@ -26,7 +38,7 @@
                         <Border Grid.Column="0" Background="#FFF5F5" CornerRadius="8" Padding="15">
                             <StackPanel HorizontalAlignment="Center">
                                 <TextBlock Text="👥" FontSize="24" HorizontalAlignment="Center"/>
-                                <TextBlock Text="32" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="TxtUserCount" Text="32" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
                                 <TextBlock Text="Users" FontSize="12" Foreground="#6B7280" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Border>
@@ -34,7 +46,7 @@
                         <Border Grid.Column="2" Background="#FFF5F5" CornerRadius="8" Padding="15">
                             <StackPanel HorizontalAlignment="Center">
                                 <TextBlock Text="🏥" FontSize="24" HorizontalAlignment="Center"/>
-                                <TextBlock Text="236" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="TxtPatientCount" Text="236" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
                                 <TextBlock Text="Patients" FontSize="12" Foreground="#6B7280" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Border>
@@ -42,7 +54,7 @@
                         <Border Grid.Column="4" Background="#FFF5F5" CornerRadius="8" Padding="15">
                             <StackPanel HorizontalAlignment="Center">
                                 <TextBlock Text="📅" FontSize="24" HorizontalAlignment="Center"/>
-                                <TextBlock Text="84" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="TxtAppointmentCount" Text="84" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
                                 <TextBlock Text="Appointments" FontSize="12" Foreground="#6B7280" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Border>
@@ -50,7 +62,7 @@
                         <Border Grid.Column="6" Background="#FFF5F5" CornerRadius="8" Padding="15">
                             <StackPanel HorizontalAlignment="Center">
                                 <TextBlock Text="💊" FontSize="24" HorizontalAlignment="Center"/>
-                                <TextBlock Text="120" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="TxtInventoryCount" Text="120" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
                                 <TextBlock Text="Inventory Items" FontSize="12" Foreground="#6B7280" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Border>
@@ -58,7 +70,7 @@
                         <Border Grid.Column="8" Background="#FFF5F5" CornerRadius="8" Padding="15">
                             <StackPanel HorizontalAlignment="Center">
                                 <TextBlock Text="📋" FontSize="24" HorizontalAlignment="Center"/>
-                                <TextBlock Text="45" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="TxtPrescriptionCount" Text="45" FontSize="22" FontWeight="Bold" Foreground="#8A0007" HorizontalAlignment="Center"/>
                                 <TextBlock Text="Prescriptions" FontSize="12" Foreground="#6B7280" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Border>
@@ -88,7 +100,7 @@
                             </StackPanel>
                         </StackPanel>
                         <TextBlock Text="Creates a complete snapshot of all users, patients, appointments, inventory, and prescriptions." TextWrapping="Wrap" Foreground="#6B7280" Margin="0,0,0,15"/>
-                        <Button Content="⬇ Export Backup" Background="#16A34A" Foreground="White" FontWeight="Bold" Padding="15" BorderThickness="0">
+                        <Button Content="⬇ Export Backup" Background="#16A34A" Foreground="White" FontWeight="Bold" Padding="15" BorderThickness="0" Click="BtnExport_Click" Cursor="Hand">
                             <Button.Resources><Style TargetType="Border"><Setter Property="CornerRadius" Value="10"/></Style></Button.Resources>
                         </Button>
                     </StackPanel>
@@ -110,7 +122,7 @@
                         <Border Background="#FFFBEB" BorderBrush="#FDE68A" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,0,15">
                             <TextBlock Text="Warning: Restoring will replace all current data. This cannot be undone." Foreground="#B45309" FontSize="12" TextWrapping="Wrap"/>
                         </Border>
-                        <Button Content="⬆ Choose Backup File" Background="#8A0007" Foreground="White" FontWeight="Bold" Padding="15" BorderThickness="0">
+                        <Button Content="⬆ Choose Backup File" Background="#8A0007" Foreground="White" FontWeight="Bold" Padding="15" BorderThickness="0" Click="BtnRestore_Click" Cursor="Hand">
                             <Button.Resources><Style TargetType="Border"><Setter Property="CornerRadius" Value="10"/></Style></Button.Resources>
                         </Button>
                     </StackPanel>
