@@ -32,7 +32,9 @@
             <!-- Previous records + selected-record detail -->
             <Border Grid.Column="0" Style="{StaticResource Card}" Padding="0">
                 <DockPanel>
-                    <TextBlock DockPanel.Dock="Top" Text="Previous records (click one to view details)" Style="{StaticResource H2}" Margin="14,12,0,8"/>
+                    <Border DockPanel.Dock="Top" Style="{StaticResource CardHeaderSoft}">
+                        <TextBlock Text="📋  Previous Records  ·  click one to view details" Style="{StaticResource CardHeaderSoftTitle}"/>
+                    </Border>
                     <DataGrid x:Name="RecordsGrid" AutoGenerateColumns="True" AutoGeneratingColumn="HideId"
                               SelectionChanged="RecordsGrid_SelectionChanged" MaxHeight="180" DockPanel.Dock="Top"/>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">

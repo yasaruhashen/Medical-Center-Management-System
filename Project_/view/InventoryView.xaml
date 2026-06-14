@@ -21,7 +21,12 @@
             </Border>
 
             <Border Style="{StaticResource Card}" Padding="0">
-                <DataGrid x:Name="Grid" AutoGenerateColumns="True" AutoGeneratingColumn="Grid_AutoGeneratingColumn" SelectionChanged="Grid_SelectionChanged"/>
+                <DockPanel>
+                    <Border DockPanel.Dock="Top" Style="{StaticResource CardHeader}">
+                        <TextBlock Text="📦  Stock Items" Style="{StaticResource CardHeaderTitle}"/>
+                    </Border>
+                    <DataGrid x:Name="Grid" AutoGenerateColumns="True" AutoGeneratingColumn="Grid_AutoGeneratingColumn" SelectionChanged="Grid_SelectionChanged"/>
+                </DockPanel>
             </Border>
         </DockPanel>
 
