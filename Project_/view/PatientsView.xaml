@@ -27,7 +27,11 @@
             </Border>
 
             <Border Style="{StaticResource Card}" Padding="0">
-                <DataGrid x:Name="Grid" SelectionChanged="Grid_SelectionChanged" MouseDoubleClick="Grid_MouseDoubleClick">
+                <DockPanel>
+                    <Border DockPanel.Dock="Top" Style="{StaticResource CardHeader}">
+                        <TextBlock Text="🧑‍🤝‍🧑  Patient Records" Style="{StaticResource CardHeaderTitle}"/>
+                    </Border>
+                    <DataGrid x:Name="Grid" SelectionChanged="Grid_SelectionChanged" MouseDoubleClick="Grid_MouseDoubleClick">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Name" Binding="{Binding FullName}" Width="*"/>
                         <DataGridTextColumn Header="Type" Binding="{Binding PatientType}" Width="90"/>
@@ -37,7 +41,8 @@
                         <DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="60"/>
                         <DataGridTextColumn Header="Phone" Binding="{Binding PhoneNumber}" Width="130"/>
                     </DataGrid.Columns>
-                </DataGrid>
+                    </DataGrid>
+                </DockPanel>
             </Border>
         </DockPanel>
 

@@ -1,21 +1,20 @@
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace Project_.Views
 {
     /// <summary>
-    /// Interaction logic for DashboardView.xaml
+    /// Interaction logic for AvailabilityView.xaml
     /// UI-only stub: event handlers are present so the view compiles and renders.
     /// Wire real logic in here later.
     /// </summary>
-    public partial class DashboardView : UserControl
+    public partial class AvailabilityView : UserControl
     {
-        public DashboardView()
+        public AvailabilityView()
         {
             InitializeComponent();
         }
 
-        private void ScrollViewer_SizeChanged(object sender, SizeChangedEventArgs e) { }
+        private void SetStatus_Click(object sender, RoutedEventArgs e) { }
     }
 }

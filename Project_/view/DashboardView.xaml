@@ -17,12 +17,14 @@
 
             <UniformGrid x:Name="ChartsPanel" Margin="0,4,0,0"/>
 
-            <Border Style="{StaticResource Card}" Margin="0,18,0,0">
-                <StackPanel>
-                    <TextBlock x:Name="TxtListTitle" Style="{StaticResource H2}" Margin="0,0,0,10"/>
+            <Border Style="{StaticResource Card}" Padding="0" Margin="0,18,0,0">
+                <DockPanel>
+                    <Border DockPanel.Dock="Top" Style="{StaticResource CardHeader}">
+                        <TextBlock x:Name="TxtListTitle" Style="{StaticResource CardHeaderTitle}"/>
+                    </Border>
+                    <TextBlock x:Name="TxtEmpty" DockPanel.Dock="Bottom" Style="{StaticResource SubtleText}" Visibility="Collapsed" Margin="14,10"/>
                     <DataGrid x:Name="ListGrid" MaxHeight="320" AutoGenerateColumns="True"/>
-                    <TextBlock x:Name="TxtEmpty" Style="{StaticResource SubtleText}" Visibility="Collapsed"/>
-                </StackPanel>
+                </DockPanel>
             </Border>
         </StackPanel>
     </ScrollViewer>
