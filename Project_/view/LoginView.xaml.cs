@@ -151,13 +151,12 @@ namespace Project_.Views
             }
 
             // ── Authenticate against your data layer here ──
-            // TODO: Replace with real DB / service call
-            bool authenticated = AuthenticateUser(username, password, _selectedRole);
+            var (authenticated, userId) = AuthenticateUser(username, password, _selectedRole);
 
             if (authenticated)
             {
                 HideError();
-                OnLoginSuccess(_selectedRole);
+                OnLoginSuccess(_selectedRole, userId);
             }
             else
             {
@@ -173,21 +172,23 @@ namespace Project_.Views
         /// Replace with actual database lookup.
         /// Demo credentials: admin/admin123, doctor/doc123, staff/staff123
         /// </summary>
-        private static bool AuthenticateUser(string username, string password, string role)
+        private static (bool success, long? userId) AuthenticateUser(string username, string password, string role)
         {
             try
             {
-                var sql = "SELECT PasswordHash, Role FROM Users WHERE Username = @Username AND IsActive = 1";
+                var sql = "SELECT Id, PasswordHash, Role FROM Users WHERE Username = @Username AND IsActive = 1";
                 var data = App.Database.ExecuteQuery(sql, new Dictionary<string, object?> { { "Username", username } });
                 if (data.Rows.Count > 0)
                 {
                     var row = data.Rows[0];
                     var dbRole = row["Role"]?.ToString();
                     var hash = row["PasswordHash"]?.ToString();
+                    var id = row["Id"] != DBNull.Value ? Convert.ToInt64(row["Id"]) : (long?)null;
                     
                     if (string.Equals(dbRole, role, StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(hash))
                     {
-                        return BCrypt.Net.BCrypt.Verify(password, hash);
+                        bool isMatch = BCrypt.Net.BCrypt.Verify(password, hash);
+                        return (isMatch, isMatch ? id : null);
                     }
                 }
             }
@@ -196,23 +197,24 @@ namespace Project_.Views
                 // Fallback for safety
             }
 
-            return role switch
+            bool fallbackMatch = role switch
             {
                 "Admin"  => username == "admin"  && password == "admin123",
                 "Doctor" => username == "doctor" && password == "doc123",
                 "Staff"  => username == "staff"  && password == "staff123",
                 _        => false
             };
+            return (fallbackMatch, fallbackMatch ? 1L : null); // Fallback to ID 1
         }
 
         /// <summary>
         /// Called when authentication succeeds.
         /// Raises navigation event for the host window.
         /// </summary>
-        private void OnLoginSuccess(string role)
+        private void OnLoginSuccess(string role, long? userId)
         {
             // Raise the event so the host (MainWindow) can navigate to the shell
-            LoginSucceeded?.Invoke(this, new LoginEventArgs(role));
+            LoginSucceeded?.Invoke(this, new LoginEventArgs(role, userId));
         }
 
         // ── Public event for the host window to subscribe to ──────────
@@ -251,6 +253,11 @@ namespace Project_.Views
     public class LoginEventArgs : EventArgs
     {
         public string Role { get; }
-        public LoginEventArgs(string role) => Role = role;
+        public long? UserId { get; }
+        public LoginEventArgs(string role, long? userId = null)
+        {
+            Role = role;
+            UserId = userId;
+        }
     }
 }

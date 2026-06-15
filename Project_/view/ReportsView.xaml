@@ -3,14 +3,116 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Project_.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <!-- Design the Reports configuration and generation buttons here -->
-        <TextBlock Text="Reports View - Place report generation parameters and controls here" 
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Center" 
-                   FontSize="20"/>
-    </Grid>
+             d:DesignHeight="700" d:DesignWidth="1100"
+             Background="#F9FAFB">
+    <DockPanel Margin="20">
+        <!-- Header -->
+        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,30">
+            <TextBlock Text="Reports &amp; Analytics" Style="{StaticResource H1}" FontWeight="Bold" Margin="0,0,0,2"/>
+            <TextBlock Text="Generate and download reports for your clinical activities." Style="{StaticResource SubtleText}"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Appointment Report -->
+                    <Border Grid.Column="0" Style="{StaticResource Card}" Padding="25" Margin="0,0,0,20">
+                        <StackPanel>
+                            <DockPanel Margin="0,0,0,15">
+                                <Border DockPanel.Dock="Left" Background="#FEF2F2" CornerRadius="8" Padding="12" Margin="0,0,15,0">
+                                    <TextBlock Text="📅" FontSize="20" Foreground="#8A0007"/>
+                                </Border>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="Appointment Report" FontWeight="Bold" Foreground="#1F2937" FontSize="16"/>
+                                    <TextBlock Text="Download a summary of your appointments." Foreground="#6B7280" FontSize="13"/>
+                                </StackPanel>
+                            </DockPanel>
+
+                            <Grid Margin="0,0,0,20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="15"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Start Date" FontSize="12" Foreground="#374151" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                    <DatePicker x:Name="ApptStart" Height="36" Style="{StaticResource FormInput}"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="End Date" FontSize="12" Foreground="#374151" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                    <DatePicker x:Name="ApptEnd" Height="36" Style="{StaticResource FormInput}"/>
+                                </StackPanel>
+                            </Grid>
+                            <Button Content="⤓ Export CSV" Style="{StaticResource PrimaryButton}" Click="BtnExportAppt_Click"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Prescription Report -->
+                    <Border Grid.Column="2" Style="{StaticResource Card}" Padding="25" Margin="0,0,0,20">
+                        <StackPanel>
+                            <DockPanel Margin="0,0,0,15">
+                                <Border DockPanel.Dock="Left" Background="#F0FDF4" CornerRadius="8" Padding="12" Margin="0,0,15,0">
+                                    <TextBlock Text="💊" FontSize="20" Foreground="#16A34A"/>
+                                </Border>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="Prescription Report" FontWeight="Bold" Foreground="#1F2937" FontSize="16"/>
+                                    <TextBlock Text="Download a log of prescribed medications." Foreground="#6B7280" FontSize="13"/>
+                                </StackPanel>
+                            </DockPanel>
+
+                            <Grid Margin="0,0,0,20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="15"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Start Date" FontSize="12" Foreground="#374151" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                    <DatePicker x:Name="RxStart" Height="36" Style="{StaticResource FormInput}"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="End Date" FontSize="12" Foreground="#374151" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                    <DatePicker x:Name="RxEnd" Height="36" Style="{StaticResource FormInput}"/>
+                                </StackPanel>
+                            </Grid>
+                            <Button Content="⤓ Export CSV" Style="{StaticResource PrimaryButton}" Click="BtnExportRx_Click"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Patient List -->
+                    <Border Grid.Column="0" Style="{StaticResource Card}" Padding="25" Margin="0,0,0,20">
+                        <StackPanel>
+                            <DockPanel Margin="0,0,0,15">
+                                <Border DockPanel.Dock="Left" Background="#EFF6FF" CornerRadius="8" Padding="12" Margin="0,0,15,0">
+                                    <TextBlock Text="🧑‍🤝‍🧑" FontSize="20" Foreground="#2563EB"/>
+                                </Border>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="Patient List" FontWeight="Bold" Foreground="#1F2937" FontSize="16"/>
+                                    <TextBlock Text="Download a full list of registered patients." Foreground="#6B7280" FontSize="13"/>
+                                </StackPanel>
+                            </DockPanel>
+                            <TextBlock Text="Export all patients currently registered in the system. Useful for backups and external analytics." Foreground="#4B5563" FontSize="13" TextWrapping="Wrap" Margin="0,0,0,20" MinHeight="60"/>
+                            <Button Content="⤓ Export CSV" Style="{StaticResource PrimaryButton}" Click="BtnExportPatients_Click"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
 </UserControl>

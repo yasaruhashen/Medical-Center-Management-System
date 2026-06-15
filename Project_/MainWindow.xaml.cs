@@ -33,6 +33,12 @@ namespace Project_
                 adminShell.LogoutRequested += AdminShell_LogoutRequested;
                 ShellGrid.Children.Add(adminShell);
             }
+            else if (e.Role == "Doctor")
+            {
+                var doctorShell = new DoctorShellView(e.UserId);
+                doctorShell.LogoutRequested += AdminShell_LogoutRequested; // We can reuse the same logout handler
+                ShellGrid.Children.Add(doctorShell);
+            }
             else
             {
                 // Placeholder for other roles
