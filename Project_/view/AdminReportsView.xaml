@@ -66,6 +66,158 @@
                 </Border>
             </Grid>
 
+            <!-- Charts Section (Mocked up) -->
+            <Grid Margin="0,0,0,25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Users by Role (Pie) -->
+                <Border Grid.Row="0" Grid.Column="0" Background="White" BorderBrush="#F3F4F6" BorderThickness="1" CornerRadius="12" Padding="20">
+                    <Border.Effect><DropShadowEffect BlurRadius="5" ShadowDepth="1" Color="#000000" Opacity="0.05"/></Border.Effect>
+                    <StackPanel>
+                        <TextBlock Text="Users by Role" FontWeight="SemiBold" FontSize="16" Foreground="#374151" Margin="0,0,0,15"/>
+                        <Grid Height="180">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Grid Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="130" Height="130">
+                                <Ellipse Fill="#8A0007" Width="130" Height="130"/>
+                                <Path Data="M 65,65 L 130,65 A 65,65 0 0,1 65,130 Z" Fill="#F7AA37"/>
+                                <Path Data="M 65,65 L 65,130 A 65,65 0 0,1 0,65 Z" Fill="#4E0205"/>
+                                <Ellipse Fill="White" Width="70" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                            
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Border Width="10" Height="10" CornerRadius="5" Background="#8A0007" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Admin" Foreground="#4B5563" FontSize="12" Width="50"/>
+                                    <TextBlock Text="4" Foreground="#8A0007" FontWeight="Bold" FontSize="12"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Border Width="10" Height="10" CornerRadius="5" Background="#4E0205" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Doctor" Foreground="#4B5563" FontSize="12" Width="50"/>
+                                    <TextBlock Text="12" Foreground="#4E0205" FontWeight="Bold" FontSize="12"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Width="10" Height="10" CornerRadius="5" Background="#F7AA37" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Staff" Foreground="#4B5563" FontSize="12" Width="50"/>
+                                    <TextBlock Text="16" Foreground="#F7AA37" FontWeight="Bold" FontSize="12"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Patients by Gender (Pie) -->
+                <Border Grid.Row="0" Grid.Column="2" Background="White" BorderBrush="#F3F4F6" BorderThickness="1" CornerRadius="12" Padding="20">
+                    <Border.Effect><DropShadowEffect BlurRadius="5" ShadowDepth="1" Color="#000000" Opacity="0.05"/></Border.Effect>
+                    <StackPanel>
+                        <TextBlock Text="Patients by Gender" FontWeight="SemiBold" FontSize="16" Foreground="#374151" Margin="0,0,0,15"/>
+                        <Grid Height="180">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Grid Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="130" Height="130">
+                                <Ellipse Fill="#4E0205" Width="130" Height="130"/>
+                                <Path Data="M 65,65 L 65,0 A 65,65 0 0,1 130,65 Z" Fill="#8A0007"/>
+                                <Ellipse Fill="White" Width="70" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                            
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Border Width="10" Height="10" CornerRadius="5" Background="#4E0205" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Male" Foreground="#4B5563" FontSize="12" Width="50"/>
+                                    <TextBlock Text="140" Foreground="#4E0205" FontWeight="Bold" FontSize="12"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Border Width="10" Height="10" CornerRadius="5" Background="#8A0007" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Female" Foreground="#4B5563" FontSize="12" Width="50"/>
+                                    <TextBlock Text="96" Foreground="#8A0007" FontWeight="Bold" FontSize="12"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Appointments by Status (Bar) -->
+                <Border Grid.Row="2" Grid.Column="0" Background="White" BorderBrush="#F3F4F6" BorderThickness="1" CornerRadius="12" Padding="20">
+                    <Border.Effect><DropShadowEffect BlurRadius="5" ShadowDepth="1" Color="#000000" Opacity="0.05"/></Border.Effect>
+                    <StackPanel>
+                        <TextBlock Text="Appointments by Status" FontWeight="SemiBold" FontSize="16" Foreground="#374151" Margin="0,0,0,15"/>
+                        <Grid Height="180">
+                            <!-- Mock lines for the chart background -->
+                            <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,20">
+                                <Border Height="1" Background="#F0E6E6" Margin="0,0,0,35"/>
+                                <Border Height="1" Background="#F0E6E6" Margin="0,0,0,35"/>
+                                <Border Height="1" Background="#F0E6E6" Margin="0,0,0,35"/>
+                                <Border Height="1" Background="#F0E6E6"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="180">
+                                <StackPanel VerticalAlignment="Bottom" Margin="0,0,20,0">
+                                    <Border Width="40" Height="120" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="Scheduled" FontSize="11" Foreground="#9CA3AF" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                </StackPanel>
+                                <StackPanel VerticalAlignment="Bottom" Margin="0,0,20,0">
+                                    <Border Width="40" Height="90" Background="#F7AA37" CornerRadius="4,4,0,0" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="Completed" FontSize="11" Foreground="#9CA3AF" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                </StackPanel>
+                                <StackPanel VerticalAlignment="Bottom">
+                                    <Border Width="40" Height="30" Background="#4E0205" CornerRadius="4,4,0,0" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="Cancelled" FontSize="11" Foreground="#9CA3AF" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Inventory by Category (Bar) -->
+                <Border Grid.Row="2" Grid.Column="2" Background="White" BorderBrush="#F3F4F6" BorderThickness="1" CornerRadius="12" Padding="20">
+                    <Border.Effect><DropShadowEffect BlurRadius="5" ShadowDepth="1" Color="#000000" Opacity="0.05"/></Border.Effect>
+                    <StackPanel>
+                        <TextBlock Text="Inventory by Category" FontWeight="SemiBold" FontSize="16" Foreground="#374151" Margin="0,0,0,15"/>
+                        <Grid Height="180">
+                            <!-- Mock lines for the chart background -->
+                            <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,20">
+                                <Border Height="1" Background="#F0E6E6" Margin="0,0,0,35"/>
+                                <Border Height="1" Background="#F0E6E6" Margin="0,0,0,35"/>
+                                <Border Height="1" Background="#F0E6E6" Margin="0,0,0,35"/>
+                                <Border Height="1" Background="#F0E6E6"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="180">
+                                <StackPanel VerticalAlignment="Bottom" Margin="0,0,15,0">
+                                    <Border Width="35" Height="140" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="Pills" FontSize="11" Foreground="#9CA3AF" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                </StackPanel>
+                                <StackPanel VerticalAlignment="Bottom" Margin="0,0,15,0">
+                                    <Border Width="35" Height="80" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="Syrups" FontSize="11" Foreground="#9CA3AF" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                </StackPanel>
+                                <StackPanel VerticalAlignment="Bottom" Margin="0,0,15,0">
+                                    <Border Width="35" Height="110" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="Equip." FontSize="11" Foreground="#9CA3AF" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                </StackPanel>
+                                <StackPanel VerticalAlignment="Bottom">
+                                    <Border Width="35" Height="50" Background="#8A0007" CornerRadius="4,4,0,0" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="Misc" FontSize="11" Foreground="#9CA3AF" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
             <!-- Low Stock Table -->
             <Border Background="White" BorderBrush="#F3F4F6" BorderThickness="1" CornerRadius="12">
                 <Border.Effect><DropShadowEffect BlurRadius="5" ShadowDepth="1" Color="#000000" Opacity="0.05"/></Border.Effect>
