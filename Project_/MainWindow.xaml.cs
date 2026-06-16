@@ -39,6 +39,15 @@ namespace Project_
                 doctorShell.LogoutRequested += AdminShell_LogoutRequested; // We can reuse the same logout handler
                 ShellGrid.Children.Add(doctorShell);
             }
+<<<<<<< Updated upstream
+=======
+            else if (e.Role == "Staff")
+            {
+                var staffShell = new StaffShellView();
+                staffShell.LogoutRequested += AdminShell_LogoutRequested;
+                ShellGrid.Children.Add(staffShell);
+            }
+>>>>>>> Stashed changes
             else
             {
                 // Placeholder for other roles
