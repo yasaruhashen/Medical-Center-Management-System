@@ -99,6 +99,7 @@ namespace Project_.src.Services
             return result is null || result is DBNull ? 0 : Convert.ToInt64(result);
         }
 
+        /// <summary>Runs a SELECT and returns the result as a DataTable (for grids/reports).</summary>
         public DataTable ExecuteQuery(string sql, IDictionary<string, object?>? parameters = null)
         {
             using var connection = OpenConnection();
@@ -107,24 +108,7 @@ namespace Project_.src.Services
             BindParameters(command, parameters);
             using var reader = command.ExecuteReader();
             var table = new DataTable();
-            
-            // Add columns without constraints to avoid ADO.NET ConstraintExceptions 
-            // (e.g. SQLite allows multiple NULLs in UNIQUE columns, but DataTable does not)
-            for (int i = 0; i < reader.FieldCount; i++)
-            {
-                table.Columns.Add(reader.GetName(i), reader.GetFieldType(i) ?? typeof(object));
-            }
-            
-            while (reader.Read())
-            {
-                var row = table.NewRow();
-                for (int i = 0; i < reader.FieldCount; i++)
-                {
-                    row[i] = reader.GetValue(i);
-                }
-                table.Rows.Add(row);
-            }
-            
+            table.Load(reader);
             return table;
         }
 
@@ -177,20 +161,6 @@ namespace Project_.src.Services
         {
             ExecuteNonQuery(SchemaSql);
             SeedDefaultAdmin();
-            MigrateSchema();
-        }
-
-        private void MigrateSchema()
-        {
-            try
-            {
-                // Add Status column to Prescriptions if it doesn't exist
-                ExecuteNonQuery("ALTER TABLE Prescriptions ADD COLUMN Status TEXT NOT NULL DEFAULT 'Pending';");
-            }
-            catch
-            {
-                // Column likely already exists
-            }
         }
 
         private void SeedDefaultAdmin()
@@ -330,7 +300,6 @@ CREATE TABLE IF NOT EXISTS Prescriptions (
     Dosage          TEXT,
     Instructions    TEXT,
     Quantity        INTEGER NOT NULL DEFAULT 1,
-    Status          TEXT    NOT NULL DEFAULT 'Pending',
     CreatedAt       TEXT    NOT NULL,
     FOREIGN KEY (MedicalRecordId) REFERENCES MedicalRecords(Id),
     FOREIGN KEY (InventoryItemId) REFERENCES Inventory(Id)
