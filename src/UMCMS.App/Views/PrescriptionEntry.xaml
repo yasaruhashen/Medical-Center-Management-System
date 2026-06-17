@@ -1,0 +1,70 @@
+<UserControl x:Class="UMCMS.App.Views.PrescriptionEntry"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" d:DesignHeight="320" d:DesignWidth="520">
+    <StackPanel>
+        <Border Background="#FBF7F2" CornerRadius="8" Padding="12" Margin="0,0,0,8">
+            <StackPanel>
+                <TextBlock Text="Add Medicine" Style="{StaticResource H2}" FontSize="13"/>
+                <TextBlock Text="Type to search a medicine, Enter → quantity, Enter → adds the line. Enter on an empty medicine box finishes."
+                           Style="{StaticResource SubtleText}" TextWrapping="Wrap" Margin="0,2,0,8"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/><ColumnDefinition Width="6"/>
+                        <ColumnDefinition Width="64"/><ColumnDefinition Width="6"/>
+                        <ColumnDefinition Width="90"/><ColumnDefinition Width="6"/>
+                        <ColumnDefinition Width="120"/><ColumnDefinition Width="6"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Medicine" Style="{StaticResource SubtleText}"/>
+                        <ComboBox x:Name="RxMedicine" Height="36" Margin="0,2,0,0" IsEditable="True"
+                                  IsTextSearchEnabled="True" StaysOpenOnEdit="True" DisplayMemberPath="ItemName"
+                                  PreviewKeyDown="RxMedicine_PreviewKeyDown"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Qty" Style="{StaticResource SubtleText}"/>
+                        <TextBox x:Name="RxQty" Style="{StaticResource FormInput}" Height="36" Text="1" PreviewKeyDown="RxQty_PreviewKeyDown"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="4">
+                        <TextBlock Text="Times/day" Style="{StaticResource SubtleText}"/>
+                        <ComboBox x:Name="RxTimes" Height="36" Margin="0,2,0,0">
+                            <ComboBoxItem Content="1"/><ComboBoxItem Content="2"/>
+                            <ComboBoxItem Content="3" IsSelected="True"/><ComboBoxItem Content="4"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="6">
+                        <TextBlock Text="Timing" Style="{StaticResource SubtleText}"/>
+                        <ComboBox x:Name="RxTiming" Height="36" Margin="0,2,0,0">
+                            <ComboBoxItem Content="Before meals"/>
+                            <ComboBoxItem Content="After meals" IsSelected="True"/>
+                            <ComboBoxItem Content="With meals"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="8" VerticalAlignment="Bottom">
+                        <Button Content="Add" Style="{StaticResource SecondaryButton}" Click="BtnAddRx_Click"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <DataGrid x:Name="RxGrid" AutoGenerateColumns="False" IsReadOnly="False" CanUserAddRows="False" MaxHeight="200">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Medicine" Binding="{Binding Medicine}" Width="*"/>
+                <DataGridTextColumn Header="Qty" Binding="{Binding Quantity}" Width="60"/>
+                <DataGridTextColumn Header="Times/day" Binding="{Binding TimesPerDay}" Width="80"/>
+                <DataGridTextColumn Header="Timing" Binding="{Binding Timing}" Width="120"/>
+                <DataGridTemplateColumn Header="" Width="70" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Remove" FontSize="11" Foreground="#8A0007" Background="Transparent" BorderThickness="0"
+                                    Cursor="Hand" Click="BtnRemoveRx_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</UserControl>
