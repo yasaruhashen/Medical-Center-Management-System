@@ -1,0 +1,67 @@
+<UserControl x:Class="UMCMS.App.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" d:DesignHeight="640" d:DesignWidth="1000">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel MaxWidth="760" HorizontalAlignment="Left">
+            <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+                <StackPanel>
+                    <TextBlock Text="System Information" Style="{StaticResource H2}"/>
+                    <TextBlock Text="Medi Help J'Pura — University Medical Centre Management System" Style="{StaticResource SubtleText}" Margin="0,6,0,0"/>
+                    <TextBlock Text="Version 1.0 · WPF · .NET 8 · SQLite" Style="{StaticResource SubtleText}"/>
+                    <TextBlock x:Name="TxtDb" Style="{StaticResource SubtleText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+                <StackPanel>
+                    <TextBlock Text="Forecast Parameters" Style="{StaticResource H2}"/>
+                    <TextBlock Text="Tune the reorder forecast. Changes apply the next time the forecast is opened." Style="{StaticResource SubtleText}" TextWrapping="Wrap" Margin="0,4,0,10"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="14"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Smoothing factor α (0–1)" Style="{StaticResource SubtleText}"/>
+                            <TextBox x:Name="FAlpha" Style="{StaticResource FormInput}" Width="120" HorizontalAlignment="Left" Margin="0,2,0,0"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Service factor z (safety stock)" Style="{StaticResource SubtleText}"/>
+                            <TextBox x:Name="FZ" Style="{StaticResource FormInput}" Width="120" HorizontalAlignment="Left" Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                    <TextBlock Text="Auto-lock after inactivity (minutes · 0 = off)" Style="{StaticResource SubtleText}" Margin="0,10,0,0"/>
+                    <TextBox x:Name="FIdle" Style="{StaticResource FormInput}" Width="120" HorizontalAlignment="Left" Margin="0,2,0,0"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                        <Button Content="Save" Style="{StaticResource PrimaryButton}" Click="BtnSave_Click"/>
+                        <TextBlock x:Name="TxtSaved" Style="{StaticResource SubtleText}" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+                <StackPanel>
+                    <TextBlock Text="Shared Database (LAN)" Style="{StaticResource H2}"/>
+                    <TextBlock TextWrapping="Wrap" Style="{StaticResource SubtleText}" Margin="0,4,0,10"
+                               Text="To run on several PCs, share one folder on the host (e.g. reception PC) and set every client's path to that shared file, e.g. \\RECEPTION-PC\MediHelp\umcms.db. Leave blank to use this PC's local database. Takes effect after restart."/>
+                    <TextBox x:Name="FDbPath" Style="{StaticResource FormInput}" Margin="0,2,0,0"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Button Content="Save Shared Path" Style="{StaticResource PrimaryButton}" Click="BtnSaveDb_Click"/>
+                        <Button Content="Use Local" Style="{StaticResource SecondaryButton}" Margin="8,0,0,0" Click="BtnLocalDb_Click"/>
+                        <TextBlock x:Name="TxtDbSaved" Style="{StaticResource SubtleText}" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="Roles &amp; Access" Style="{StaticResource H2}"/>
+                    <TextBlock Text="• Administrator — users, inventory, forecast, reports, backup, settings" Style="{StaticResource SubtleText}" Margin="0,6,0,0"/>
+                    <TextBlock Text="• General Physician — appointments, patients, consultations, general medication" Style="{StaticResource SubtleText}"/>
+                    <TextBlock Text="• Dentist — appointments, patients, dental records, dental supplies" Style="{StaticResource SubtleText}"/>
+                    <TextBlock Text="• Receptionist — patients, appointments, waitlist" Style="{StaticResource SubtleText}"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,32 @@
+<UserControl x:Class="UMCMS.App.Views.BackupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" d:DesignHeight="640" d:DesignWidth="1000">
+    <StackPanel MaxWidth="640" HorizontalAlignment="Left">
+        <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+            <StackPanel>
+                <TextBlock Text="💾  Backup Database" Style="{StaticResource H2}"/>
+                <TextBlock Text="Save a timestamped copy of the database file to a folder you choose." Style="{StaticResource SubtleText}" Margin="0,4,0,12"/>
+                <Button Content="Create Backup…" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" Click="BtnBackup_Click"/>
+            </StackPanel>
+        </Border>
+
+        <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+            <StackPanel>
+                <TextBlock Text="♻  Restore Database" Style="{StaticResource H2}"/>
+                <TextBlock Text="Replace the current database with a backup file. This overwrites all current data and the app will close so changes load cleanly." Style="{StaticResource SubtleText}" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                <Button Content="Restore from Backup…" Style="{StaticResource SecondaryButton}" HorizontalAlignment="Left" Click="BtnRestore_Click"/>
+            </StackPanel>
+        </Border>
+
+        <Border Style="{StaticResource Card}">
+            <StackPanel>
+                <TextBlock Text="Database location" Style="{StaticResource H2}"/>
+                <TextBlock x:Name="TxtPath" Style="{StaticResource SubtleText}" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                <TextBlock x:Name="TxtStatus" Foreground="#1B7A3D" FontSize="12" Margin="0,10,0,0" Visibility="Collapsed"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

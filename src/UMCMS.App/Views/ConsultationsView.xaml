@@ -1,0 +1,85 @@
+<UserControl x:Class="UMCMS.App.Views.ConsultationsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:v="clr-namespace:UMCMS.App.Views"
+             mc:Ignorable="d" d:DesignHeight="700" d:DesignWidth="1100">
+    <DockPanel>
+        <!-- Patient header -->
+        <Border DockPanel.Dock="Top" Style="{StaticResource Card}" Margin="0,0,0,14">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="Patient:" Style="{StaticResource SubtleText}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <ComboBox x:Name="FPatient" Height="36" Width="240" DisplayMemberPath="FullName" SelectionChanged="FPatient_SelectionChanged"/>
+                    <Button x:Name="BtnExportEhr" Content="🖨 Export EHR" Style="{StaticResource SecondaryButton}" Margin="8,0,0,0"
+                            Click="BtnExportEhr_Click" IsEnabled="False"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock x:Name="TxtPatientName" Style="{StaticResource H1}" FontSize="20" Text="Select a patient"/>
+                    <WrapPanel x:Name="DemoPanel" Margin="0,6,0,0"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="14"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Previous records + selected-record detail -->
+            <Border Grid.Column="0" Style="{StaticResource Card}" Padding="0">
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top" Text="Previous records (click one to view details)" Style="{StaticResource H2}" Margin="14,12,0,8"/>
+                    <DataGrid x:Name="RecordsGrid" AutoGenerateColumns="True" AutoGeneratingColumn="HideId"
+                              SelectionChanged="RecordsGrid_SelectionChanged" MaxHeight="180" DockPanel.Dock="Top"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="14,8,14,14">
+                            <TextBlock x:Name="TxtDetailHeader" Style="{StaticResource H2}" FontSize="14"
+                                       Text="Select a record above to view its full details." Foreground="#777"/>
+                            <StackPanel x:Name="DetailPanel" Margin="0,6,0,0"/>
+                            <TextBlock x:Name="TxtRxLabel" Text="Prescriptions" Style="{StaticResource SubtleText}" Margin="0,10,0,4" Visibility="Collapsed"/>
+                            <DataGrid x:Name="RxHistoryGrid" AutoGenerateColumns="True" MaxHeight="220"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
+
+            <!-- New consultation -->
+            <Border Grid.Column="2" Style="{StaticResource Card}" Padding="0">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="16" x:Name="ConsultPanel" IsEnabled="False">
+                        <TextBlock Text="New Consultation" Style="{StaticResource H2}" Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Symptoms" Style="{StaticResource SubtleText}"/>
+                        <TextBox x:Name="RSymptoms" Style="{StaticResource FormInput}" Margin="0,2,0,8"/>
+                        <TextBlock Text="Diagnosis *" Style="{StaticResource SubtleText}"/>
+                        <TextBox x:Name="RDiagnosis" Style="{StaticResource FormInput}" Margin="0,2,0,8"/>
+                        <TextBlock Text="Treatment" Style="{StaticResource SubtleText}"/>
+                        <TextBox x:Name="RTreatment" Style="{StaticResource FormInput}" Margin="0,2,0,8"/>
+
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="8"/><ColumnDefinition Width="*"/><ColumnDefinition Width="8"/><ColumnDefinition Width="*"/><ColumnDefinition Width="8"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0"><TextBlock Text="BP" Style="{StaticResource SubtleText}"/><TextBox x:Name="RBp" Style="{StaticResource FormInput}"/></StackPanel>
+                            <StackPanel Grid.Column="2"><TextBlock Text="Pulse" Style="{StaticResource SubtleText}"/><TextBox x:Name="RPulse" Style="{StaticResource FormInput}"/></StackPanel>
+                            <StackPanel Grid.Column="4"><TextBlock Text="Temp °C" Style="{StaticResource SubtleText}"/><TextBox x:Name="RTemp" Style="{StaticResource FormInput}"/></StackPanel>
+                            <StackPanel Grid.Column="6"><TextBlock Text="Weight kg" Style="{StaticResource SubtleText}"/><TextBox x:Name="RWeight" Style="{StaticResource FormInput}"/></StackPanel>
+                        </Grid>
+
+                        <v:PrescriptionEntry x:Name="RxEntry"/>
+
+                        <TextBlock x:Name="TxtError" Foreground="#8A0007" FontSize="12" Visibility="Collapsed" Margin="0,8,0,8"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                            <Button x:Name="BtnSendPharmacy" Content="✓ Complete &amp; Send to Pharmacy"
+                                    Style="{StaticResource PrimaryButton}" Click="BtnSendPharmacy_Click"/>
+                            <Button x:Name="BtnDispenseHere" Content="Complete &amp; Dispense Here"
+                                    Style="{StaticResource SecondaryButton}" Margin="8,0,0,0" Click="BtnDispenseHere_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </DockPanel>
+</UserControl>
