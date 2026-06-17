@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>UMCMS.App</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Resource Include="resources\**\*.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UMCMS.Domain\UMCMS.Domain.csproj" />
+    <ProjectReference Include="..\UMCMS.Data\UMCMS.Data.csproj" />
+    <ProjectReference Include="..\UMCMS.Services\UMCMS.Services.csproj" />
+  </ItemGroup>
+</Project>
